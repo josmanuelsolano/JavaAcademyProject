@@ -16,11 +16,11 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	
-	@RequestMapping(value = "home")
+	@RequestMapping(value = "")
 	public String home(Model model) {
 		logger.info("HOME MENU CONTROLLER");
 		
-		return "home";
+		return "index";
 	}
 	
 }

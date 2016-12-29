@@ -15,30 +15,16 @@ public class UserRoleEntity implements Serializable{
 	
 	@Id
 	@Column(name="user_role_id", nullable = false)
-	private String id;
+	private String userRoleId;
 	
 	@Column(name="description", nullable = true)
 	private String description;
-	
-	
-    public UserRoleEntity() {
-		
-	}
-    
-	public UserRoleEntity(String userRole){
-		this.id = userRole;
-	}
-	
-	public UserRoleEntity(String id, String description) {
-		this.id = id;
-		this.description = description;
-	}
 
-	public String getId() {
-		return id;
+	public String getUserRoleId() {
+		return userRoleId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserRoleId(String userRoleId) {
+		this.userRoleId = userRoleId;
 	}
 	public String getDescription() {
 		return description;
@@ -52,7 +38,7 @@ public class UserRoleEntity implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((userRoleId == null) ? 0 : userRoleId.hashCode());
 		return result;
 	}
 
@@ -70,10 +56,10 @@ public class UserRoleEntity implements Serializable{
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (userRoleId == null) {
+			if (other.userRoleId != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!userRoleId.equals(other.userRoleId))
 			return false;
 		return true;
 	}

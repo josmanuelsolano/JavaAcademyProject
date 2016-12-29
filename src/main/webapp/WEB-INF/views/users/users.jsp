@@ -9,8 +9,10 @@
 	<meta charset="UTF-8">
 </head>
 <body style="font-family: sans-serif;">
-	<h3 style="color: blue; font-family: sans-serif;">User List:</h3>
-	<br/>
+	<h2 style="font-family: sans-serif;">MVC Application</h2>
+	<hr>
+	<h3>Users:</h3>
+	<br>
 	<table border="1" style="width: 50%;">
 		<tr>
 			<th width="20%">Username</th>
@@ -28,7 +30,7 @@
 		</c:forEach>
 	</table>
 	<br/>
-	<a href="<c:url value="/home"/>">Return to Index</a>
+	<a href="<c:url value="/"/>">Return to Index</a>
 	
 </body>
 </html>

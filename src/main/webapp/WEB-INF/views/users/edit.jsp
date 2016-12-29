@@ -9,9 +9,11 @@
 	<meta charset="UTF-8">
 </head>
 <body style="font-family: sans-serif;">
-	<h3 style="color: blue; font-family: sans-serif;">Update User</h3>
-	
-	<form action="/ecom/users/update" method="post">
+	<h2 style="font-family: sans-serif;">MVC Application</h2>
+	<hr>
+	<h3>Update user: "${user.username}"</h3>
+	<br>
+	<form action="/jpaproject/users/update/${user.username}" method="POST">
 		<table style="width: 40%;">
 			<tr>
 				<td width="13%">Username</td>
@@ -36,7 +38,7 @@
 				<td>
 					<select name="role">
 						<c:forEach var="userRole" items="${userRoles}">
-							<option value="${userRole.id}" <c:if test="${userRole.id==user.userRole.id}">selected</c:if>>${userRole.description}</option>
+							<option value="${userRole.userRoleId}" <c:if test="${userRole.userRoleId==user.userRole.userRoleId}">selected</c:if>>${userRole.description}</option>
 						</c:forEach>
 					</select>
 				</td>

@@ -22,7 +22,7 @@ public class UserServiceImplIt {
 	
 	@Test
 	public void testFindAllUsers(){
-		List<UserEntity> users = userService.findUsers();
+		List<UserEntity> users = userService.findAllUsers();
 		Assert.assertNotNull(users);
 		Assert.assertEquals( 3 , users.size());
 	}	
