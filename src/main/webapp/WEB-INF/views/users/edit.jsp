@@ -13,7 +13,7 @@
 	<hr>
 	<h3>Update user: "${user.username}"</h3>
 	<br>
-	<form action="/jpaproject/users/update/${user.username}" method="POST">
+	<form action="/jpaproject/users/update" method="POST">
 		<table style="width: 40%;">
 			<tr>
 				<td width="13%">Username</td>

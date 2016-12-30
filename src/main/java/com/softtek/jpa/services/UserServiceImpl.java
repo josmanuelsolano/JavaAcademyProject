@@ -20,19 +20,16 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	@Transactional
 	public List<UserEntity> findAllUsers() {
 		return userRepository.findAll();
 	}
 
 	@Override
 	public UserEntity create(UserEntity user) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	@Transactional
 	public UserEntity findById(String username) {
 		return userRepository.findOne(username);
 	}
@@ -41,7 +38,11 @@ public class UserServiceImpl implements UserService {
 	public boolean update(UserEntity user) {
 		logger.info("USER FROM CONTROLLER: " + user.getName() );
 		if (this.isValidUser(user)) {
-			userRepository.saveAndFlush(user);
+			UserEntity updatedUser = userRepository.findOne(user.getUsername());
+			updatedUser.setName(user.getName());
+			updatedUser.setUserRole(user.getUserRole());
+			updatedUser.setActive(user.getActive());
+			userRepository.save(updatedUser);
 			return true;
 		}
 		return false;
@@ -50,15 +51,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserEntity delete(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	private Boolean isValidUser(UserEntity user) {
 		
 		if (user.getUsername() == null 
-				|| user.getPassword() == null 
-				|| user.getName() == null 
+				|| user.getPassword() == null
+				|| user.getPassword().isEmpty()
+				|| user.getName() == null
+				|| user.getName().isEmpty()
 				|| user.getUserRole().getUserRoleId() == null 
 				|| user.getActive() == null) {
 			return false;

@@ -19,7 +19,14 @@ public class UserRoleEntity implements Serializable{
 	
 	@Column(name="description", nullable = true)
 	private String description;
-
+	
+	public UserRoleEntity() {
+		
+	}
+	public UserRoleEntity(String userRoleId, String description) {
+		this.userRoleId = userRoleId;
+		this.description = description;
+	}
 	public String getUserRoleId() {
 		return userRoleId;
 	}

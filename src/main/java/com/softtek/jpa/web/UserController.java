@@ -44,18 +44,14 @@ public class UserController {
 		UserEntity user = userService.findById(username);
 		model.addObject("user", user);
 		List<UserRoleEntity> userRoles = userRoleService.findAllUserRole();
-		for (UserRoleEntity userRoleEntity : userRoles) {
-			logger.info("DATOS ROLE: " + userRoleEntity.getUserRoleId()+" "+userRoleEntity.getDescription());
-		}
 		model.addObject("userRoles", userRoles);
 		return model;
 	 }
 	
-	@RequestMapping(value = "/update/{username}", method=RequestMethod.POST)
+	@RequestMapping(value = "update", method=RequestMethod.POST)
 	public ModelAndView update(@ModelAttribute("user") UserEntity user,
-			@ModelAttribute("role") UserRoleEntity userRole) {
-			logger.info("UPDATE VALUE: " + user.getUserRole());
-			user.setUserRole(userRole);
+			@ModelAttribute("role") String userRole) {
+			user.setUserRole(new UserRoleEntity(userRole, null));
 		 if (userService.update(user)) {
 			 ModelAndView model = new ModelAndView("redirect:/users");
 			 return model;
