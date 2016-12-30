@@ -88,7 +88,7 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t<a href=\"");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("\">Return to Index</a>\r\n");
+      out.write("\">Return to Menu</a>\r\n");
       out.write("\t\r\n");
       out.write("</body>\r\n");
       out.write("</html>");

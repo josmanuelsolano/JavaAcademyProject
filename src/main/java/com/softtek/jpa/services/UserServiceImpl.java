@@ -38,12 +38,14 @@ public class UserServiceImpl implements UserService {
 	public boolean update(UserEntity user) {
 		logger.info("USER FROM CONTROLLER: " + user.getName() );
 		if (this.isValidUser(user)) {
-			UserEntity updatedUser = userRepository.findOne(user.getUsername());
-			updatedUser.setName(user.getName());
-			updatedUser.setUserRole(user.getUserRole());
-			updatedUser.setActive(user.getActive());
-			userRepository.save(updatedUser);
-			return true;
+			if (userRepository.exists(user.getUsername())) {
+				UserEntity updatedUser = userRepository.findOne(user.getUsername());
+				updatedUser.setName(user.getName());
+				updatedUser.setUserRole(user.getUserRole());
+				updatedUser.setActive(user.getActive());
+				userRepository.save(updatedUser);
+				return true;
+			}
 		}
 		return false;
 		

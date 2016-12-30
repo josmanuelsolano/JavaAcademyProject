@@ -8,11 +8,10 @@
 	<meta charset="UTF-8">
 </head>
 <body style="font-family: sans-serif;">
-	<h3 style="color: blue; font-family: sans-serif;">Cart List:</h3>
-	 
-	<a href="<c:url value="/index.jsp"/>">Return to Index</a>
-	<br/><br/>
-	
+	<h2 style="font-family: sans-serif;">MVC Application</h2>
+	<hr>
+	<h3>Carts:</h3>
+	<br/>
 	<table border="1" style="width: 100%;">
 		<tr>
 			<th width="5%">Cart Id</th>
@@ -27,18 +26,19 @@
 		</tr>
 		<c:forEach var="cart" items="${carts}">
 			<tr>
-				<td><a href="<c:url value="/cart/edit.jsp?cartId=${cart.id}"/>"><fmt:formatNumber pattern="000" value="${cart.id}"/></a></td>
-				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.linesAmount}" /></td>
-				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.shippingAmount}" /></td>
-				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartAmount}" /></td>
-				<td>${cart.shipTo.name}</td>
-				<td>${cart.status.description}</td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.createDate}" /></td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.updateDate}" /></td>
-				<td><c:if test="${cart.status.id != 1300}">Delete</c:if></td>
+				<td><a href="<c:url value="/cart/edit.jsp?cartId=${cart.cartKey.cartId}"/>"><fmt:formatNumber pattern="000" value="${cart.cartKey.cartId}"/></a></td>
+				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.linesAmount}" /></td>
+				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.shippingAmount}" /></td>
+				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.cartAmount}" /></td>
+				<td>${cart.cartDetails.shipTo.name}</td>
+				<td>${cart.cartDetails.status.description}</td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.audit.createDate}" /></td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.audit.updateDate}" /></td>
+				<td><c:if test="${cart.cartDetails.status.id != 1300}">Delete</c:if></td>
 			</tr>
 		</c:forEach>
 	</table>
-	
+	<br/>
+	<a href="<c:url value="/"/>">Back to Menu</a>
 </body>
 </html>

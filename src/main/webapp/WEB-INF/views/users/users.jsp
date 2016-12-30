@@ -30,7 +30,7 @@
 		</c:forEach>
 	</table>
 	<br/>
-	<a href="<c:url value="/"/>">Return to Index</a>
+	<a href="<c:url value="/"/>">Return to Menu</a>
 	
 </body>
 </html>

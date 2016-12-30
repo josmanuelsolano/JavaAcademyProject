@@ -62,6 +62,6 @@
 	<div>${msg}</div>
 	
 	<br>
-	<a href="<c:url value="/users/"/>">Return to List</a>
+	<a href="<c:url value="/users/"/>">Back to Users List</a>
 </body>
 </html>
