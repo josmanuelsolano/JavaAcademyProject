@@ -24,14 +24,35 @@ public class CartDetails implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "ship_to_id", nullable = true)
-	private ShipTo shipTo;
+	private ShipToEntity shipTo;
 	
 	@ManyToOne
 	@JoinColumn(name = "status_id", nullable = false)
-	private Status status;
+	private StatusEntity status;
+	
+	
+	
+	
+	public CartDetails() {
+	}
 
 
-    public Double getLinesAmount() {
+	public CartDetails(ShipToEntity shipTo, StatusEntity status) {
+		this.shipTo = shipTo;
+		this.status = status;
+	}
+
+
+    public CartDetails(Double linesAmount, Double shippingAmount, Double cartAmount, ShipToEntity shipTo,
+			StatusEntity status) {
+		this.linesAmount = linesAmount;
+		this.shippingAmount = shippingAmount;
+		this.cartAmount = cartAmount;
+		this.shipTo = shipTo;
+		this.status = status;
+	}
+
+	public Double getLinesAmount() {
         return this.linesAmount;
     }
 
@@ -55,19 +76,19 @@ public class CartDetails implements Serializable{
         this.cartAmount = cartAmount;
     }
 
-    public ShipTo getShipTo() {
+    public ShipToEntity getShipTo() {
         return this.shipTo;
     }
 
-    public void setShipTo(ShipTo shipTo) {
+    public void setShipTo(ShipToEntity shipTo) {
         this.shipTo = shipTo;
     }
 
-    public Status getStatus() {
+    public StatusEntity getStatus() {
         return this.status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(StatusEntity status) {
         this.status = status;
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="status")
-public class Status implements Serializable{
+public class StatusEntity implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -25,12 +25,16 @@ public class Status implements Serializable{
 
 	
 	
-	public Status() {
+	public StatusEntity() {
 		
+	}
+	
+	public StatusEntity(Long id){
+		this.id = id;
 	}
 
 
-	public Status(Long id, String description, String type) {
+	public StatusEntity(Long id, String description, String type) {
 		this.id = id;
 		this.description = description;
 		this.type = type;

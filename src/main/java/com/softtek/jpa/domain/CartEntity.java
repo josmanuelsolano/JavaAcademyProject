@@ -46,11 +46,4 @@ public class CartEntity implements Serializable{
 		this.audit = audit;
 	}
 
-	@Override
-	public String toString() {
-		return "CartEntity [cartKey=" + cartKey + ", cartDetails=" + cartDetails + ", audit=" + audit + "]";
-	}
-	
-	
-
 }

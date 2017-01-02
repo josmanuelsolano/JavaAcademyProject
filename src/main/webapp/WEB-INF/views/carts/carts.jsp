@@ -26,7 +26,7 @@
 		</tr>
 		<c:forEach var="cart" items="${carts}">
 			<tr>
-				<td><a href="<c:url value="/cart/edit.jsp?cartId=${cart.cartKey.cartId}"/>"><fmt:formatNumber pattern="000" value="${cart.cartKey.cartId}"/></a></td>
+				<td><a href="<c:url value="/carts/edit/${cart.cartKey.cartId}"/>"><fmt:formatNumber pattern="000" value="${cart.cartKey.cartId}"/></a></td>
 				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.linesAmount}" /></td>
 				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.shippingAmount}" /></td>
 				<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.cartAmount}" /></td>

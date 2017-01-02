@@ -8,12 +8,12 @@ public interface CartService {
 	
 List<CartEntity> findAllCarts();
 	
-	CartEntity create(CartEntity user);
+	CartEntity create(CartEntity cart);
 	
-	CartEntity findById(Long cart_id);
+	CartEntity findByCartKey(Long cart);
 	
-	boolean update(CartEntity user);//TODO remember catch the exception
+	boolean update(CartEntity cart);//TODO remember catch the exception
 	
-	CartEntity delete(int id);//TODO remember catch the exception
+	CartEntity delete(Long id);//TODO remember catch the exception
 
 }
