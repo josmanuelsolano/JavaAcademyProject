@@ -1,18 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Carts</title>
-	<meta charset="UTF-8">
-</head>
-<body style="font-family: sans-serif;">
-	<h2 style="font-family: sans-serif;">MVC Application</h2>
-	<hr>
-	<h3>Carts:</h3>
-	<br/>
-	<table border="1" style="width: 100%;">
+<table border="1" style="width: 100%;">
 		<tr>
 			<th width="5%">Cart Id</th>
 			<th width="10%">Lines Amount</th>
@@ -38,7 +27,3 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<br/>
-	<a href="<c:url value="/"/>">Back to Menu</a>
-</body>
-</html>

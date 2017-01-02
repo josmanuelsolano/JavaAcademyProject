@@ -17,7 +17,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "")
-	public String home(Model model) {
+	public String home() {
 		logger.info("HOME MENU CONTROLLER");
 		
 		return "index";

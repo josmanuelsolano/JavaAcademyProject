@@ -39,7 +39,7 @@ public class CartController {
 	@RequestMapping(value = "")
 	public ModelAndView carts() {
 		logger.info("LIST CART CONTROLLER");
-		ModelAndView model = new ModelAndView("carts/carts");
+		ModelAndView model = new ModelAndView("carts");
 		List<CartEntity> carts = cartService.findAllCarts();
 		model.addObject("carts", carts);
 		return model;
