@@ -1,7 +1,5 @@
-<div class="leftPane">
-   <ul class="leftMenu">
+  <ul class="nav nav-pills nav-stacked">
     <li><a href="/jpaproject">Home</a></li>
-    <li><a href="users">Users</a></li>
-    <li><a href="carts">Carts</a></li>
-   </ul>
-  </div>
+    <li><a href="/jpaproject/users">Users</a></li>
+    <li><a href="/jpaproject/carts">Carts</a></li>
+  </ul>

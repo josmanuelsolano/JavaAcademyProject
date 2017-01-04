@@ -3,6 +3,8 @@
 <tiles-definitions>
  <definition name="baseLayout" template="/WEB-INF/views/base/layout.jsp">
   <put-attribute name="title" value="Ecom Application" />
+  <put-attribute name="css" value="css/bootstrap.min.css"/>
+  <put-attribute name="js" value="js/bootstrap.min.js"/>
   <put-attribute name="header" value="/WEB-INF/views/base/header.jsp" />
   <put-attribute name="menu" value="/WEB-INF/views/base/menu.jsp" />
   <put-attribute name="body" value="" />
@@ -16,5 +18,10 @@
  <definition name="carts" extends="baseLayout">
   <put-attribute name="title" value="Ecom Application - Carts List"></put-attribute>
   <put-attribute name="body" value="/WEB-INF/views/carts/carts.jsp"/>
+ </definition>
+ <definition name="cartEdit" extends="baseLayout">
+  <put-attribute name="title" value="Ecom Application - Cart Edit"></put-attribute>
+  <put-attribute name="css" value="../../css/bootstrap.min.css"/>
+  <put-attribute name="body" value="/WEB-INF/views/carts/edit.jsp"/>
  </definition>
 </tiles-definitions> 
