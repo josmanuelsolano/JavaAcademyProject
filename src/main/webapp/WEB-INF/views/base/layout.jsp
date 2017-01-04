@@ -4,6 +4,7 @@
 <head>
 <title><tiles:insertAttribute name="title"/></title>
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
+<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <tiles:insertAttribute name="header" />
