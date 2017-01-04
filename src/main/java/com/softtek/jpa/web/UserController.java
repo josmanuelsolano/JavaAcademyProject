@@ -32,7 +32,7 @@ public class UserController {
 	@RequestMapping(value = "", method=RequestMethod.GET)
 	public ModelAndView users() {
 		logger.info("LIST USERS CONTROLLER");
-		ModelAndView model = new ModelAndView("users/users");
+		ModelAndView model = new ModelAndView("users");
 		final List<UserEntity> users = userService.findAllUsers();
 		model.addObject("users", users);	
 		return model;
@@ -40,7 +40,7 @@ public class UserController {
 
 	@RequestMapping(value = "/edit/{username}", method=RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("username") String username) {
-		ModelAndView model = new ModelAndView("users/edit");
+		ModelAndView model = new ModelAndView("userEdit");
 		UserEntity user = userService.findById(username);
 		model.addObject("user", user);
 		List<UserRoleEntity> userRoles = userRoleService.findAllUserRole();
@@ -57,7 +57,7 @@ public class UserController {
 			 return model;
 		 }
 	
-		 ModelAndView model = new ModelAndView("users/edit");
+		 ModelAndView model = new ModelAndView("userEdit");
 		 List<UserRoleEntity> userRoles = userRoleService.findAllUserRole();
 		 model.addObject("userRoles", userRoles);
 		 model.addObject("user", user);

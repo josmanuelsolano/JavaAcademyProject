@@ -1,13 +1,17 @@
-<div class="navbar-inverse">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/jpaproject">Ecom Application</a>
-        <div class="nav-collapse collapse">
-          
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>  
+<div class="row-header">
+	<div class="col-lg-12">
+		<h1>
+			<tiles:insertAttribute name="headerTitle"/>
+			<small>
+				<tiles:insertAttribute name="headerDescription"/>
+			</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="/jpaproject"><i class="icon-dashboard"></i> Home</a></li>
+			<li class="active"><i class="icon-file-alt"></i> <tiles:insertAttribute name="breadcrumbs"/></li>
+		</ol>
+	</div>
+</div>
+<hr>
+<!-- /.row -->

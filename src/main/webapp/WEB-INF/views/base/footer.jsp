@@ -1,7 +1,5 @@
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; Java Academy 2016</p>
-
-        <p class="pull-right">Manuel Solano</p>
-    </div>
+	<div class="container">
+		<p class="pull-right">&copy; Java Academy 2016 - Manuel Solano</p>
+	</div>
 </footer>
