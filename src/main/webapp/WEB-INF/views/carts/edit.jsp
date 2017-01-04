@@ -1,17 +1,6 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>States</title>
-	<meta charset="UTF-8">
-</head>
-<body style="font-family: sans-serif;">
-	<h3 style="color: blue; font-family: sans-serif;">New State</h3>
 	
-	<form action="/jpaproject/carts/update" method="POST" modelAttribute="cart">
+	<form action="/jpaproject/carts/update" method="POST">
 		<table style="width: 80%;">
 			<tr>
 				<td width="13%">Id</td>
@@ -71,8 +60,3 @@
 	
 	<br>
 	<div>${msg}</div>
-	
-	<br>
-	<a href="<c:url value="/carts/"/>">Return to List</a>
-</body>
-</html>

@@ -1,4 +1,7 @@
-<div class="footer">
-  <hr/>
-  <h1>Java Academy 2016</h1>
- </div>
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">&copy; Java Academy 2016</p>
+
+        <p class="pull-right">Manuel Solano</p>
+    </div>
+</footer>

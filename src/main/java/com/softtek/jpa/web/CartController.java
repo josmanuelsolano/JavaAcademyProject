@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +46,8 @@ public class CartController {
 	
 	@RequestMapping(value = "/edit/{cartId}", method=RequestMethod.GET)
 	public ModelAndView edit(@PathVariable("cartId") Long cartId) {
-		ModelAndView model = new ModelAndView("carts/edit");
+		ModelAndView model = new ModelAndView("cartEdit");
+		logger.info("UPDATE METHOD LOGGER: " + cartId);
 		CartEntity cart = cartService.findByCartKey(cartId);
 		model.addObject("cart", cart);
 		List<ShipToEntity> shipTos = shipToService.findAllShipTos();
@@ -58,11 +58,9 @@ public class CartController {
 	 }
 	
 	@RequestMapping(value = "update", method=RequestMethod.POST)
-	public ModelAndView update(@ModelAttribute("cart") CartEntity cartModel, 
-			@ModelAttribute("id") Long cartId,
+	public ModelAndView update(@ModelAttribute("id") Long cartId,
 			@ModelAttribute("shipToId") Long shipTo,
 			@ModelAttribute("statusId") Long statusId) {
-		logger.info("UPDATE METHOD LOGGER: " + cartModel.getCartKey().getCartId().toString());
 		CartEntity cart = cartService.findByCartKey(cartId);
 		logger.info("UPDATE METHOD CONTROLLER: ", cart.getCartKey().getCartId());
 		cart.setCartDetails(new CartDetails(new ShipToEntity(shipTo), new StatusEntity(statusId)));

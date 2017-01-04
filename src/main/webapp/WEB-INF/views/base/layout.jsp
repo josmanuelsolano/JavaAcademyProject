@@ -3,15 +3,19 @@
 <html>
 <head>
 <title><tiles:insertAttribute name="title"/></title>
-<link rel="stylesheet" type="text/css" href="css/tiles.css">
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
 <tiles:insertAttribute name="header" />
- <div class="main">
-  <tiles:insertAttribute name="menu" />
-  <div class="rightPane">
-   <tiles:insertAttribute name="body" />
-  </div>
+ <div class="container">
+  	<div class="row">
+  	  <div class="col-md-1">
+        <tiles:insertAttribute name="menu"/>
+      </div>
+      <div class="col-md-11">
+      	<tiles:insertAttribute name="body"/>
+      </div>
+   </div>
  </div>
 <tiles:insertAttribute name="footer" />
  
