@@ -84,6 +84,7 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
       out.write("</div>\r\n");
+      out.write("\r\n");
       out.write("<!-- /.row -->\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
