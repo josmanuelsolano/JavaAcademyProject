@@ -84,6 +84,11 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t</div>\r\n");
       out.write("\t</div>\r\n");
       out.write("</div>\r\n");
+      out.write("<div ng-app=\"\">\r\n");
+      out.write("  <p>Name: <input type=\"text\" ng-model=\"name\"></p>\r\n");
+      out.write("  <p ng-bind=\"name\"></p>\r\n");
+      out.write("</div>\r\n");
+      out.write("\r\n");
       out.write("<!-- /.row -->\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -115,21 +120,21 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t<tr>\r\n");
-          out.write("\t\t\t\t\t\t<td><a href=\"");
+          out.write("\t\t\t\t\t<tr ng-repeat=\"user in users\">\r\n");
+          out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.username\"><a href=\"");
           if (_jspx_meth_c_005furl_005f0(_jspx_th_c_005fforEach_005f0, _jspx_page_context, _jspx_push_body_count_c_005fforEach_005f0))
             return true;
           out.write('"');
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.username}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</a></td>\r\n");
-          out.write("\t\t\t\t\t\t<td>");
+          out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.name\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
-          out.write("\t\t\t\t\t\t<td>");
+          out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.userRole.description\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.userRole.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
-          out.write("\t\t\t\t\t\t<td>");
+          out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.active\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${user.active}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td>\r\n");
           out.write("\t\t\t\t\t</tr>\r\n");
@@ -161,7 +166,7 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_005furl_005f0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _005fjspx_005ftagPool_005fc_005furl_0026_005fvalue_005fnobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_005furl_005f0.setPageContext(_jspx_page_context);
     _jspx_th_c_005furl_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_005fforEach_005f0);
-    // /WEB-INF/views/users/users.jsp(21,19) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/users/users.jsp(21,49) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_c_005furl_005f0.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/users/edit/${user.username}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
     int _jspx_eval_c_005furl_005f0 = _jspx_th_c_005furl_005f0.doStartTag();
     if (_jspx_th_c_005furl_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
