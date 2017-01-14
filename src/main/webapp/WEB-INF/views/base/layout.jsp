@@ -10,7 +10,7 @@
 
     <title><tiles:insertAttribute name="title"/></title>
     
-    <!-- Angular-1.4.8 -->
+    
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/css/bootstrap.css" />" rel="stylesheet">
 
@@ -21,7 +21,7 @@
     
   </head>
 
-  <body>
+  <body ng-app="ecomApp">
 
     <div id="wrapper">
 	  
@@ -39,14 +39,13 @@
       <!-- Footer -->
       <tiles:insertAttribute name="footer"/>
     </div><!-- /#wrapper -->
-
-	
-    <!-- JavaScript -->
+    
+	<!-- JavaScript -->
     <script src="<c:url value="/js/jquery-1.10.2.js" />"></script>
     <script src="<c:url value="/js/bootstrap.js"/>"></script>
     <script src="<c:url value="/js/angular-1.4.8/angular.min.js" />"></script>
+    <script src="<c:url value="/js/ecomApp/controllers/homeCtrl.js" />"></script>
     
-
     <!-- Page Specific Plugins -->
     <script src="<c:url value="/js/tablesorter/jquery.tablesorter.js" />"></script>
     <script src="<c:url value="/js/tablesorter/tables.js" />"></script>
