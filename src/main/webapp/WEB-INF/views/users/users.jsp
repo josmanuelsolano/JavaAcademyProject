@@ -16,14 +16,12 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="user" items="${users}">
 					<tr ng-repeat="user in users">
-						<td data-ng-blind="user.username"><a href="<c:url value="/users/edit/${user.username}"/>">${user.username}</a></td>
-						<td data-ng-blind="user.name">${user.name}</td>
-						<td data-ng-blind="user.userRole.description">${user.userRole.description}</td>
-						<td data-ng-blind="user.active">${user.active}</td>
+						<td data-ng-blind="user.username"></td>
+						<td data-ng-blind="user.name"></td>
+						<td data-ng-blind="user.userRole.description"></td>
+						<td data-ng-blind="user.active"></td>
 					</tr>
-				</c:forEach>
 				</tbody>
 			</table>
 		</div>

@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="HomeCtrl">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -14,17 +14,9 @@
 
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav side-nav">
+			<!--<li><a href="/jpaproject/users"><i class="fa fa-users"></i> Users</a></li>-->
 			<li><a href="/jpaproject/users"><i class="fa fa-users"></i> Users</a></li>
-			<li><a href="/jpaproject/carts"><i class="fa fa-shopping-cart"></i> Carts</a></li>
-			<!--<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Dropdown Item</a></li>
-                <li><a href="#">Another Item</a></li>
-                <li><a href="#">Third Item</a></li>
-                <li><a href="#">Last Item</a></li>
-              </ul>
-            </li>-->
+			<li><a ng-click="carts()"><i class="fa fa-shopping-cart"></i> Carts</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
