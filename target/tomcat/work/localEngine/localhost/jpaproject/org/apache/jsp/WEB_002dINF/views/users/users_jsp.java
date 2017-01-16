@@ -54,7 +54,7 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<div class=\"row\">\r\n");
+      out.write("<div class=\"row\" ng-controller='HomeCtrl' ng-init='users()'>\r\n");
       out.write("\t<div class=\"col-lg-12\">\r\n");
       out.write("\t\t<div class=\"table-responsive\">\r\n");
       out.write("\t\t\t<table\r\n");

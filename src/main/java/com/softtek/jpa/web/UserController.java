@@ -31,11 +31,12 @@ public class UserController {
 	private UserRoleService userRoleService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
+	
 	@RequestMapping(value = "", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<UserEntity> users(Model model) {
-		logger.info("LIST USERS CONTROLLER");	
-		return userService.findAllUsers();
+	public ModelAndView usersData() {
+		ModelAndView model = new ModelAndView("users");
+		model.addObject("users", userService.findAllUsers());
+		return model;
 	}
 
 	@RequestMapping(value = "/edit/{username}", method=RequestMethod.GET)

@@ -6,7 +6,7 @@ ecomApp.controller('HomeCtrl' ,['$scope','$http', function($scope, $http){
 			  method: 'GET',
 			  url: 'http://localhost:8080/jpaproject/users'
 			}).then(function successCallback(response) {
-			    $scope.users = response.data;
+			    $scope.users = response.data.users;
 			  }, function errorCallback(response) {
 				  console.log('BAD RESPONSE HOME CTRL: ' + response);
 			  });
