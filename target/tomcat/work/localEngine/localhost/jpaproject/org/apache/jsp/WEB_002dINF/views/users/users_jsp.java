@@ -50,11 +50,7 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<div class=\"row\" ng-controller='HomeCtrl' ng-init='users()'>\r\n");
+      out.write("<div class=\"row\" ng-controller='HomeCtrl' ng-init=\"getUsers()\">\r\n");
       out.write("\t<div class=\"col-lg-12\">\r\n");
       out.write("\t\t<div class=\"table-responsive\">\r\n");
       out.write("\t\t\t<table\r\n");
@@ -69,10 +65,10 @@ public final class users_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t</thead>\r\n");
       out.write("\t\t\t\t<tbody>\r\n");
       out.write("\t\t\t\t\t<tr ng-repeat=\"user in users\">\r\n");
-      out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.username\"></td>\r\n");
-      out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.name\"></td>\r\n");
-      out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.userRole.description\"></td>\r\n");
-      out.write("\t\t\t\t\t\t<td data-ng-blind=\"user.active\"></td>\r\n");
+      out.write("\t\t\t\t\t\t<td><a  href=\"users/edit/{{user.username}}\" ng-click=\"userId(user.username)\" data-ng-bind=\"user.username\"></a></td>\r\n");
+      out.write("\t\t\t\t\t\t<td data-ng-bind=\"user.name\"></td>\r\n");
+      out.write("\t\t\t\t\t\t<td data-ng-bind=\"user.userRole.description\"></td>\r\n");
+      out.write("\t\t\t\t\t\t<td data-ng-bind=\"user.active\"></td>\r\n");
       out.write("\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t</tbody>\r\n");
       out.write("\t\t\t</table>\r\n");

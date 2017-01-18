@@ -17,6 +17,8 @@
     <!-- Add custom CSS here -->
     <link href="<c:url value="/css/sb-admin.css" />" rel="stylesheet">
     <link rel="stylesheet" href="<c:url value="/font-awesome/css/font-awesome.min.css" />">
+    
+    
 
     
   </head>
@@ -44,6 +46,7 @@
     <script src="<c:url value="/js/jquery-1.10.2.js" />"></script>
     <script src="<c:url value="/js/bootstrap.js"/>"></script>
     <script src="<c:url value="/js/angular-1.4.8/angular.min.js" />"></script>
+    <script src="<c:url value="/js/ecomApp/ecomApp.js" />"></script>
     <script src="<c:url value="/js/ecomApp/controllers/homeCtrl.js" />"></script>
     
     <!-- Page Specific Plugins -->

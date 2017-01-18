@@ -1,6 +1,6 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="row">
+<div class="row" ng-controller='HomeCtrl' ng-init="editUser()">
 	<div class="col-sm-3">
 		<form role="form" action="/jpaproject/users/update" method="POST">
 			<div class="form-group">
@@ -20,18 +20,14 @@
 			<div class="form-group">
 				<label for="role">Role * </label>
 				<div>
-					<select class="form-control" name="role" ng-model="userRole" required>
-						<option ng-repeat="role in userRoles" value="role.user_role_id">{{role.description}}</option>
+					<select class="form-control" name="role" required>
+						<option ng-repeat="role in userRoles" value="role.user_role_id" data-ng-bind="role.description"></option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="active">Active * </label>
 				<div>
-					<select class="form-control" name="active" required>
-						<option value="S" <c:if test="${'S'==user.active}">selected</c:if>>S</option>
-						<option value="N" <c:if test="${'N'==user.active}">selected</c:if>>N</option>
-					</select>
 					<select class="form-control" name="active" ng-model="user.active" required>
 					    <option value="">
 					    <option value="S">S</option>

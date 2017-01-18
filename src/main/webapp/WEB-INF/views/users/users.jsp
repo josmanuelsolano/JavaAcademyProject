@@ -1,8 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
-<div class="row" ng-controller='HomeCtrl' ng-init='users()'>
+<div class="row" ng-controller='HomeCtrl' ng-init="getUsers()">
 	<div class="col-lg-12">
 		<div class="table-responsive">
 			<table
@@ -17,10 +13,10 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="user in users">
-						<td data-ng-blind="user.username"></td>
-						<td data-ng-blind="user.name"></td>
-						<td data-ng-blind="user.userRole.description"></td>
-						<td data-ng-blind="user.active"></td>
+						<td><a  href="users/edit/{{user.username}}" ng-click="userId(user.username)" data-ng-bind="user.username"></a></td>
+						<td data-ng-bind="user.name"></td>
+						<td data-ng-bind="user.userRole.description"></td>
+						<td data-ng-bind="user.active"></td>
 					</tr>
 				</tbody>
 			</table>
