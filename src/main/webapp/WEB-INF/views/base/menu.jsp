@@ -16,7 +16,7 @@
 		<ul class="nav navbar-nav side-nav">
 			<!--<li><a href="/jpaproject/users"><i class="fa fa-users"></i> Users</a></li>-->
 			<li><a href="/jpaproject/users"><i class="fa fa-users"></i> Users</a></li>
-			<li><a ng-click="carts()"><i class="fa fa-shopping-cart"></i> Carts</a></li>
+			<li><a href="/jpaproject/carts"><i class="fa fa-shopping-cart"></i> Carts</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->

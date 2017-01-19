@@ -47,7 +47,8 @@
     <script src="<c:url value="/js/bootstrap.js"/>"></script>
     <script src="<c:url value="/js/angular-1.4.8/angular.min.js" />"></script>
     <script src="<c:url value="/js/ecomApp/ecomApp.js" />"></script>
-    <script src="<c:url value="/js/ecomApp/controllers/homeCtrl.js" />"></script>
+    <script src="<c:url value="/js/ecomApp/controllers/userCtrl.js" />"></script>
+    <script src="<c:url value="/js/ecomApp/controllers/cartCtrl.js" />"></script>
     
     <!-- Page Specific Plugins -->
     <script src="<c:url value="/js/tablesorter/jquery.tablesorter.js" />"></script>

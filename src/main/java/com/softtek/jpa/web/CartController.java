@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.softtek.jpa.domain.CartDetails;
@@ -36,12 +37,13 @@ public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
 	
 	@RequestMapping(value = "")
-	public ModelAndView carts() {
-		logger.info("LIST CART CONTROLLER");
-		ModelAndView model = new ModelAndView("carts");
-		List<CartEntity> carts = cartService.findAllCarts();
-		model.addObject("carts", carts);
-		return model;
+	public String carts() {
+		return "carts";
+	}
+	
+	@RequestMapping(value = "carts")
+	public @ResponseBody List<CartEntity> cartsData() {
+		return cartService.findAllCarts();
 	}
 	
 	@RequestMapping(value = "/edit/{cartId}", method=RequestMethod.GET)

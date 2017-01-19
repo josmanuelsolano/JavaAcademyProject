@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="row">
+<div class="row" ng-controller="CartCtrl" ng-init="getCart()">
     <div class="col-lg-12">
 		<div class="table-responsive">
 			<table
@@ -20,36 +20,17 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="cart" items="${carts}">
-					<c:choose>
-					    <c:when test="${cart.cartDetails.status.id <= 1100}">
-					       <c:set var="rowColor" scope="session" value="${'info'}"/>
-					    </c:when>
-					    <c:when test="${cart.cartDetails.status.id <= 1200}">
-					       <c:set var="rowColor" scope="session" value="${'warning'}"/>
-					    </c:when>
-					    <c:when test="${cart.cartDetails.status.id <= 1300}">
-					       <c:set var="rowColor" scope="session" value="${'success'}"/>
-					    </c:when>
-					    <c:when test="${cart.cartDetails.status.id <= 1400}">
-					       <c:set var="rowColor" scope="session" value="${'danger'}"/>
-					    </c:when>
-					    <c:otherwise>
-					        <c:set var="rowColor" scope="session" value="${'default'}"/>
-					    </c:otherwise>
-					</c:choose>
-					<tr class="${rowColor}">
-						<td><a href="<c:url value="/carts/edit/${cart.cartKey.cartId}"/>"><fmt:formatNumber pattern="000" value="${cart.cartKey.cartId}"/></a></td>
-						<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.linesAmount}" /></td>
-						<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.shippingAmount}" /></td>
-						<td><fmt:formatNumber pattern="$ #,##0.00" value="${cart.cartDetails.cartAmount}" /></td>
-						<td>${cart.cartDetails.shipTo.name}</td>
-						<td>${cart.cartDetails.status.description}</td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.audit.createDate}" /></td>
-						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${cart.audit.updateDate}" /></td>
-						<td><c:if test="${cart.cartDetails.status.id != 1300}">Delete</c:if></td>
+					<tr ng-repeat="cart in carts">
+						<td><a href="carts/edit/{{cart.cartKey.cartId}}" data-ng-bind="cart.cartKey.cartId"></a></td>
+						<td data-ng-bind="cart.cartDetails.linesAmount | currency"></td>
+						<td data-ng-bind="cart.cartDetails.shippingAmount | currency"></td>
+						<td data-ng-bind="cart.cartDetails.cartAmount | currency"></td>
+						<td data-ng-bind="cart.cartDetails.shipTo.name"></td>
+						<td data-ng-bind="cart.cartDetails.status.description"></td>
+						<td data-ng-bind="cart.audit.createDate | date:short"></td>
+						<td data-ng-bind="cart.audit.updateDate | date:short"></td>
+						<td>{{cart.cartDetails.status.id != 1300 ? 'Delete' : ''}}</td>
 					</tr>
-				</c:forEach>
 				</tbody>
 			</table>
 		</div>

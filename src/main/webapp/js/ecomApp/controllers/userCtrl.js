@@ -1,4 +1,4 @@
-ecomApp.controller('HomeCtrl' ,['$scope','$http','$location',
+ecomApp.controller('UserCtrl' ,['$scope','$http','$location',
 	function($scope, $http, $location){
 	
 	$scope.getUsers = function(){

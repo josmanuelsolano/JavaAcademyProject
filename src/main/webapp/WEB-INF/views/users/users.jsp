@@ -1,4 +1,4 @@
-<div class="row" ng-controller='HomeCtrl' ng-init="getUsers()">
+<div class="row" ng-controller='UserCtrl' ng-init="getUsers()">
 	<div class="col-lg-12">
 		<div class="table-responsive">
 			<table
@@ -13,7 +13,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="user in users">
-						<td><a  href="users/edit/{{user.username}}" ng-click="userId(user.username)" data-ng-bind="user.username"></a></td>
+						<td><a href="users/edit/{{user.username}}" data-ng-bind="user.username"></a></td>
 						<td data-ng-bind="user.name"></td>
 						<td data-ng-bind="user.userRole.description"></td>
 						<td data-ng-bind="user.active"></td>
