@@ -5,11 +5,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.softtek.jpa.domain.UserEntity;
@@ -28,24 +30,25 @@ public class UserController {
 	private UserRoleService userRoleService;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
+	
 	@RequestMapping(value = "", method=RequestMethod.GET)
-	public ModelAndView users() {
-		logger.info("LIST USERS CONTROLLER");
-		ModelAndView model = new ModelAndView("users");
-		final List<UserEntity> users = userService.findAllUsers();
-		model.addObject("users", users);	
-		return model;
+	public String users() {
+		return "users";
+	}
+	
+	@RequestMapping(value = "users", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<UserEntity> usersData() {
+		return userService.findAllUsers();
 	}
 
 	@RequestMapping(value = "/edit/{username}", method=RequestMethod.GET)
-	public ModelAndView edit(@PathVariable("username") String username) {
-		ModelAndView model = new ModelAndView("userEdit");
-		UserEntity user = userService.findById(username);
-		model.addObject("user", user);
-		List<UserRoleEntity> userRoles = userRoleService.findAllUserRole();
-		model.addObject("userRoles", userRoles);
-		return model;
+	public String edit(@PathVariable("username") String username) {
+		return "userEdit";
+	 }
+	
+	@RequestMapping(value = "/edit/{username}/getData", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody UserEntity editUser(@PathVariable("username") String username) {
+		return userService.findById(username);
 	 }
 	
 	@RequestMapping(value = "update", method=RequestMethod.POST)
