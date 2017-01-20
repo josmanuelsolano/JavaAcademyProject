@@ -1,11 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<div class="row" ng-controller="CartCtrl" ng-init="getCart()">
+<div class="row" ng-controller="CartCtrl" ng-init="getCarts()">
     <div class="col-lg-12">
 		<div class="table-responsive">
 			<table
-				class="table table-bordered table-hover tablesorter">
+				class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
 					<tr>
 						<th>Cart Id <i class="fa fa-sort"></i></th>

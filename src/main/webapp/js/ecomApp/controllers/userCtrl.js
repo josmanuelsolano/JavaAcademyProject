@@ -21,6 +21,7 @@ ecomApp.controller('UserCtrl' ,['$scope','$http','$location',
 			  }, function errorCallback(response) {
 				  console.log(response);
 			  });
+		
 		$http({
 			  method: 'GET',
 			  url: 'http://localhost:8080/jpaproject/userRoles/userRoles'
@@ -28,7 +29,7 @@ ecomApp.controller('UserCtrl' ,['$scope','$http','$location',
 				$scope.userRoles = response.data;
 			  }, function errorCallback(response) {
 				  console.log(response);
-			  });	
+			  });
 	}
 	
 }]);

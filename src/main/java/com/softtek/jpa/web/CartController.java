@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,16 +48,14 @@ public class CartController {
 	}
 	
 	@RequestMapping(value = "/edit/{cartId}", method=RequestMethod.GET)
-	public ModelAndView edit(@PathVariable("cartId") Long cartId) {
-		ModelAndView model = new ModelAndView("cartEdit");
-		logger.info("UPDATE METHOD LOGGER: " + cartId);
-		CartEntity cart = cartService.findByCartKey(cartId);
-		model.addObject("cart", cart);
-		List<ShipToEntity> shipTos = shipToService.findAllShipTos();
-		model.addObject("shipTos", shipTos);
-		List<StatusEntity> cartStatus = statusService.findAllStatus();
-		model.addObject("cartStatus", cartStatus);
-		return model;
+	public String edit(@PathVariable("cartId") Long cartId) {		
+		return "cartEdit";
+	 }
+	
+	@RequestMapping(value = "/edit/{cartId}/getData", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody CartEntity editCart(@PathVariable("cartId") Long cartId) {
+		logger.info("FIND BY CART KEY: ", cartService.findByCartKey(cartId));
+		return cartService.findByCartKey(cartId);
 	 }
 	
 	@RequestMapping(value = "update", method=RequestMethod.POST)

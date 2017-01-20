@@ -22,7 +22,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
-@DatabaseSetup(value = { "/dataset/cartDefault.xml"}, connection = "dbUnitDatabaseConnection", type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseSetup(value = { "/dataset/cartDefault.xml"}, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 public class CartServiceImplTest {
@@ -33,6 +33,6 @@ public class CartServiceImplTest {
 	@Test
 	public void testFindAllCarts(){
 		List<CartEntity> cartList = cartService.findAllCarts();
-		Assert.assertNotEquals(0, cartList.size());
+		Assert.assertTrue(!cartList.isEmpty());
 	}
 }
