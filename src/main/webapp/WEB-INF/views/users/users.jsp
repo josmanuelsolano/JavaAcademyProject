@@ -1,4 +1,15 @@
 <div class="row" ng-controller='UserCtrl' ng-init="getUsers()">
+	<div class="col-sm-3">
+	<form class="form" role="search">
+        <div class="input-group">
+            <input class="form-control" id="srchInput" name="srchInput" type="text" placeholder="Search"  ng-model="srchInput">
+            <div class="input-group-btn" ng-click="searchInput(srchInput)">
+                <button class="btn btn-default" type="submit"><i">search</i></button>
+            </div>
+        </div>
+    </form>
+	</div>
+	
 	<div class="col-lg-12">
 		<div class="table-responsive">
 			<table

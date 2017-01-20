@@ -1,5 +1,5 @@
-ecomApp.controller('UserCtrl' ,['$scope','$http','$location',
-	function($scope, $http, $location){
+ecomApp.controller('UserCtrl' ,['$scope','$http','$location','$window',
+	function($scope, $http, $location, $window){
 	
 	$scope.getUsers = function(){
 		$http({
@@ -10,6 +10,19 @@ ecomApp.controller('UserCtrl' ,['$scope','$http','$location',
 			  }, function errorCallback(response) {
 				  console.log(response);
 			  });		
+	}
+	
+	$scope.searchInput = function(searchParam){
+		console.log("ENTRAAA");
+		$http({
+			  method: 'GET',
+			  url: 'http://localhost:8080/jpaproject/users/search/' + searchParam
+			}).then(function successCallback(response) {
+				//alert(response.data);
+				$window.alert("That user don't exist");
+			  }, function errorCallback(response) {
+				  $scope.users = response.data;
+			  });
 	}
 	
 	$scope.editUser = function(){

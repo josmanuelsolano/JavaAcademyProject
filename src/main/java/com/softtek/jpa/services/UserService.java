@@ -15,5 +15,7 @@ public interface UserService {
 	boolean update(UserEntity user);//TODO remember catch the exception
 	
 	UserEntity delete(int id);//TODO remember catch the exception
+	
+	List<UserEntity> findByName(String name);
 		
 }
