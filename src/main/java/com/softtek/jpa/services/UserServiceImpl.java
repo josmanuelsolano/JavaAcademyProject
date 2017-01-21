@@ -55,6 +55,12 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 	
+	@Override
+	public List<UserEntity> findByName(String name) {
+		List<UserEntity> user = userRepository.findAllByName(name);
+		return user;
+	}
+	
 	private Boolean isValidUser(UserEntity user) {
 		
 		if (user.getUsername() == null 
