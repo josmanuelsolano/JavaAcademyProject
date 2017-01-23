@@ -6,6 +6,7 @@ import com.softtek.jpa.services.CartService;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
-@DatabaseSetup(value = { "/dataset/cartDefault.xml"}, type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseSetup(value = { "/dataset/cartDefault.xml"})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @DbUnitConfiguration(databaseConnection={"testDataSource"})
@@ -33,8 +34,26 @@ public class CartServiceImplTest {
 	CartService cartService;
 	
 	@Test
-	public void shouldBeTrueIfFindAllCarts(){
+	public void mustBeTrueIfFindAllCarts(){
 		List<CartEntity> cartList = cartService.findAllCarts();
 		Assert.assertTrue(!cartList.isEmpty());
+	}
+	
+	@Test
+	public void mustBeTrueIfFindCartByCartId(){
+		Long id = (long) 1;
+		CartEntity cart = cartService.findByCartKey(id);
+		Assert.assertNotNull(cart);
+	}
+	
+	//Este test aun no me sale... :(
+	@Test
+	@Ignore
+	@DatabaseSetup(value = { "/dataset/cartDefault.xml"}, type = DatabaseOperation.UPDATE)
+	public void mustBeTrueIfRowUpdated(){
+		Long id = (long) 1;
+		CartEntity cart = cartService.findByCartKey(id);
+		cart.getCartDetails().setShippingAmount(600.00);
+		Assert.assertTrue(true == cartService.update(cart));
 	}
 }
