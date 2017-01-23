@@ -19,19 +19,21 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
 @DatabaseSetup(value = { "/dataset/cartDefault.xml"}, type = DatabaseOperation.CLEAN_INSERT)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
+@DbUnitConfiguration(databaseConnection={"testDataSource"})
 public class CartServiceImplTest {
 	
 	@Autowired
 	CartService cartService;
 	
 	@Test
-	public void testFindAllCarts(){
+	public void shouldBeTrueIfFindAllCarts(){
 		List<CartEntity> cartList = cartService.findAllCarts();
 		Assert.assertTrue(!cartList.isEmpty());
 	}

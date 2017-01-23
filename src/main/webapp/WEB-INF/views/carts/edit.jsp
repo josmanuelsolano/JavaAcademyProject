@@ -34,7 +34,7 @@
 							<label class="col-sm-5 control-label">Ship To * </label>
 							<div class="col-sm-7">
 							  <select class="form-control" name="shipTo" required>
-								  <option ng-repeat="shipTo in shipTos" ng-value="shipTo.id" ng-selected="shipTo.id==cart.cartDetails.shipTo.id">{{shipTo.name}} -- {{shipTo.address}}</option>
+								  <option ng-repeat="shipTo in shipTos" ng-value="shipTo.id" ng-selected="shipTo.id==cart.cartDetails.shipTo.id">{{shipTo.name}}</option>
 							  </select>
 							</div>
 						  </div>
@@ -42,20 +42,20 @@
 							<label class="col-sm-5 control-label">Status * </label>
 							<div class="col-sm-7">
 							  <select class="form-control" name="status" required>
-								  <option ng-repeat="status in statuses | filter:show" ng-value="status.statusId" data-ng-bind="status.description" ng-selected="status.id==cart.cartDetails.status.id"></option>
+								  <option ng-repeat="status in statuses | filter:show" ng-value="status.id" data-ng-bind="status.description" ng-selected="status.id==cart.cartDetails.status.id"></option>
 							  </select>
 							</div>
 						  </div>
                           <div class="form-group">
                             <label class="col-sm-5 control-label">Create Date</label>
                             <div class="col-sm-7">
-                              <input class="form-control" type="text" name="createDate" ng-model="cart.audit.createDate | date:short" readonly="readonly">
+                              <input class="form-control" type="text" name="createDate" ng-model="cart.audit.createDate | date:'yyyy-MM-dd HH:mm:ss' " readonly="readonly">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-5 control-label">Update Date</label>
                             <div class="col-sm-7">
-                              <input class="form-control" type="text" name="updateDate" ng-model="cart.audit.updateDate | date:short" readonly="readonly">
+                              <input class="form-control" type="text" name="updateDate" ng-model="cart.audit.updateDate | date:'yyyy-MM-dd HH:mm:ss' " readonly="readonly">
                             </div>
                           </div>
                       </div>

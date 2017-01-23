@@ -57,7 +57,7 @@ CREATE TABLE orders (
   order_amount decimal(10,2)  ,
   payment_method_id varchar(5)  ,
   payment_reference varchar(100)  ,
-  es varchar(250)  ,
+  notes varchar(250)  ,
   status_id int(11)  ,
   create_user varchar(20)  ,
   create_date datetime  ,

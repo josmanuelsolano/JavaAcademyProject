@@ -24,9 +24,9 @@
 	</bean>
 	
 	<bean id="jpaVendor" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-	   <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+	   <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
 	   <property name="showSql" value="true" />
-	   <property name="generateDdl" value="true" />
+	   <property name="generateDdl" value="false" />
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" >
@@ -36,6 +36,8 @@
 	<jdbc:embedded-database id="testDataSource" type="H2">
               <jdbc:script location="scripts/createTestTables.sql" />
        </jdbc:embedded-database>
+       
+       
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 

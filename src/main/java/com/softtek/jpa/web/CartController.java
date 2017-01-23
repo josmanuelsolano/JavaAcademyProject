@@ -1,16 +1,24 @@
 package com.softtek.jpa.web;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -54,17 +62,29 @@ public class CartController {
 	
 	@RequestMapping(value = "/edit/{cartId}/getData", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody CartEntity editCart(@PathVariable("cartId") Long cartId) {
-		logger.info("FIND BY CART KEY: ", cartService.findByCartKey(cartId));
+		logger.info("FIND BY CART KEY: " +  cartService.findByCartKey(cartId).getAudit().getUpdateDate());
 		return cartService.findByCartKey(cartId);
 	 }
 	
-	@RequestMapping(value = "update", method=RequestMethod.POST)
-	public ModelAndView update(@ModelAttribute("id") Long cartId,
-			@ModelAttribute("shipToId") Long shipTo,
-			@ModelAttribute("statusId") Long statusId) {
+	@RequestMapping(value = "/update", method=RequestMethod.POST)
+	public @ResponseBody ModelAndView update(@RequestParam("id") Long cartId,
+			@RequestParam("linesAmount") double linesAmount,
+			@RequestParam("shippingAmount") double shippingAmount,
+			@RequestParam("cartAmount") double cartAmount,
+			@RequestParam("shipTo") Long shipToId,
+			@RequestParam("status") Long statusId) {
+		
+		
+		
 		CartEntity cart = cartService.findByCartKey(cartId);
-		logger.info("UPDATE METHOD CONTROLLER: ", cart.getCartKey().getCartId());
-		cart.setCartDetails(new CartDetails(new ShipToEntity(shipTo), new StatusEntity(statusId)));
+		cart.getCartDetails().setCartAmount(cartAmount);
+		cart.getCartDetails().setLinesAmount(linesAmount);
+		cart.getCartDetails().setShippingAmount(shippingAmount);
+		cart.getCartDetails().setShipTo(new ShipToEntity(shipToId));
+		cart.getCartDetails().setStatus(new StatusEntity(statusId));
+		Calendar cal = Calendar.getInstance();
+		java.sql.Timestamp timestamp = new java.sql.Timestamp(cal.getTimeInMillis());
+		cart.getAudit().setUpdateDate(timestamp);
 		if (cartService.update(cart)) {
 			ModelAndView model = new ModelAndView("redirect:/carts");
 			return model;
@@ -79,5 +99,20 @@ public class CartController {
 		model.addObject("msg", new String("Please check the required fields."));
 		return model;
 	}
+	
+//	public String editUser(@RequestParam Long cartId, @RequestParam String status, Model model) {
+//		Cart cart = cartService.cart(cartId);
+//		List<Status> cartStatus = statusService.statusList("CART");
+//		List<ShipTo> shipTos = shipToService.shipToList();
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("cart", cart);
+//		map.put("cartStatus", cartStatus);
+//
+//		map.put("shipTos", shipTos);
+//		map.put("status", status);
+//		model.addAttribute("map", map);
+//		return "editCart";
+//
+//	}
 
 }

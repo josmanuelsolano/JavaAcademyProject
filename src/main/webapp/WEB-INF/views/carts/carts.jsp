@@ -5,15 +5,15 @@
 				class="table table-bordered table-hover table-striped tablesorter">
 				<thead>
 					<tr>
-						<th>Cart Id <i class="fa fa-sort"></i></th>
-						<th>Lines Amount <i class="fa fa-sort"></i></th>
-						<th>Shipping Amount <i class="fa fa-sort"></i></th>
-						<th>Cart Amount <i class="fa fa-sort"></i></th>
-						<th>Ship To <i class="fa fa-sort"></i></th>
-						<th>Status <i class="fa fa-sort"></i></th>
-						<th>Created Date <i class="fa fa-sort"></i></th>
-						<th>Modified Date <i class="fa fa-sort"></i></th>
-						<th>Delete <i class="fa fa-sort"></i></th>
+						<th>Cart Id </th>
+						<th>Lines Amount </th>
+						<th>Shipping Amount </th>
+						<th>Cart Amount </th>
+						<th>Ship To </th>
+						<th>Status </th>
+						<th>Created Date </th>
+						<th>Modified Date </th>
+						<th>Delete </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -24,9 +24,9 @@
 						<td data-ng-bind="cart.cartDetails.cartAmount | currency"></td>
 						<td data-ng-bind="cart.cartDetails.shipTo.name"></td>
 						<td data-ng-bind="cart.cartDetails.status.description"></td>
-						<td data-ng-bind="cart.audit.createDate | date:short"></td>
-						<td data-ng-bind="cart.audit.updateDate | date:short"></td>
-						<td>{{cart.cartDetails.status.id != 1300 ? 'Delete' : ''}}</td>
+						<td data-ng-bind="cart.audit.createDate | date:'yyyy-MM-dd HH:mm:ss'"></td>
+						<td data-ng-bind="cart.audit.updateDate | date:'yyyy-MM-dd HH:mm:ss'"></td>
+						<td data-ng-bind="cart.cartDetails.status.id != 1300 ? 'Delete' : ''"></td>
 					</tr>
 				</tbody>
 			</table>
