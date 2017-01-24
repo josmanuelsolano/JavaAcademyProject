@@ -6,9 +6,9 @@ CREATE TABLE cart (
   ship_to_id int(11)  ,
   status_id int(11)  ,
   create_user varchar(20)  ,
-  create_date datetime  ,
+  create_date timestamp ,
   update_user varchar(20)  ,
-  update_date datetime  
+  update_date timestamp  
 );
 
 CREATE TABLE cart_line (
@@ -48,10 +48,10 @@ CREATE TABLE item (
 CREATE TABLE orders (
   order_id int(11)   ,
   cart_id int(11)  ,
-  order_date datetime  ,
-  schedule_date datetime  ,
-  delivery_date datetime  ,
-  cancellation_date datetime  ,
+  order_date timestamp  ,
+  schedule_date timestamp  ,
+  delivery_date timestamp  ,
+  cancellation_date timestamp  ,
   lines_amount decimal(10,2)  ,
   shipping_amount decimal(10,2)  ,
   order_amount decimal(10,2)  ,
@@ -60,9 +60,9 @@ CREATE TABLE orders (
   notes varchar(250)  ,
   status_id int(11)  ,
   create_user varchar(20)  ,
-  create_date datetime  ,
+  create_date timestamp  ,
   update_user varchar(20)  ,
-  update_date datetime  
+  update_date timestamp  
 );
 
 CREATE TABLE payment_method (

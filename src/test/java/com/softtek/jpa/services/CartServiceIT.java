@@ -3,10 +3,7 @@ package com.softtek.jpa.services;
 import com.softtek.jpa.domain.CartEntity;
 import com.softtek.jpa.services.CartService;
 
-import java.util.List;
-
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +15,10 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DbUnitConfiguration;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(inheritLocations = true)
@@ -28,32 +26,26 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @DbUnitConfiguration(databaseConnection={"testDataSource"})
-public class CartServiceImplTest {
+public class CartServiceIT {
 	
 	@Autowired
 	CartService cartService;
 	
 	@Test
 	public void mustBeTrueIfFindAllCarts(){
-		List<CartEntity> cartList = cartService.findAllCarts();
-		Assert.assertTrue(!cartList.isEmpty());
+		Assert.assertNotNull(cartService.findAllCarts());
 	}
 	
 	@Test
-	public void mustBeTrueIfFindCartByCartId(){
-		Long id = (long) 1;
-		CartEntity cart = cartService.findByCartKey(id);
-		Assert.assertNotNull(cart);
+	public void mustBeNotNullIfFindCartByCartId(){
+		Assert.assertNotNull(cartService.findByCartKey(1L));
 	}
 	
-	//Este test aun no me sale... :(
 	@Test
-	@Ignore
-	@DatabaseSetup(value = { "/dataset/cartDefault.xml"}, type = DatabaseOperation.UPDATE)
-	public void mustBeTrueIfRowUpdated(){
-		Long id = (long) 1;
-		CartEntity cart = cartService.findByCartKey(id);
+	@ExpectedDatabase(value = "/dataset/cartExpected.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+	public void mustBeTrueIfRowUpdated() throws Exception{
+		CartEntity cart = cartService.findByCartKey(1L);
 		cart.getCartDetails().setShippingAmount(600.00);
-		Assert.assertTrue(true == cartService.update(cart));
+		cartService.update(cart);
 	}
 }

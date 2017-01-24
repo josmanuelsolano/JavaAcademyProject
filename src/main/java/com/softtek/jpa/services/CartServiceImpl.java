@@ -52,7 +52,7 @@ public class CartServiceImpl implements CartService{
 								new StatusEntity(cart.getCartDetails().getStatus().getId())
 								)
 						);
-				logger.info("UPDATE CART METHOD: ", updatedCart.getCartKey().getCartId());
+				logger.info("UPDATE CART METHOD: " + updatedCart.getCartKey().getCartId());
 				cartRepository.save(updatedCart);
 				return true;
 			}
